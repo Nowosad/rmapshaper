@@ -5,7 +5,8 @@
 \title{Aggregate shapes in a polygon or point layer.}
 \usage{
 ms_dissolve(input, field = NULL, sum_fields = NULL, copy_fields = NULL,
-  weight = NULL, snap = TRUE, force_FC = TRUE)
+  weight = NULL, snap = TRUE, snap_interval = NULL,
+  merge_overlaps = FALSE, force_FC = TRUE)
 }
 \arguments{
 \item{input}{spatial object to dissolve. One of:
@@ -26,6 +27,12 @@ copied to the aggregated feature.}
 
 \item{snap}{Snap together vertices within a small distance threshold to fix
 small coordinate misalignment in adjacent polygons. Default \code{TRUE}.}
+
+\item{snap_interval}{Specify snapping distance in source units, must be a
+numeric. Default \code{NULL}}
+
+\item{merge_overlaps}{Whether or not to dissolve overlapping polygons as well as adjacent.
+If \code{TRUE}, uses mapshaper's \code{dissolve2} command.}
 
 \item{force_FC}{should the output be forced to be a \code{FeatureCollection} even
 if there are no attributes? Default \code{TRUE}.
